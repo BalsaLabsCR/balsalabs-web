@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BalsaLabs
 
-## Getting Started
+Landing page de BalsaLabs: automatizaciones con IA para negocios.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router) + React 19
+- TypeScript
+- Tailwind CSS v4 (tokens de color y tipografía en `src/app/globals.css`)
+- Lucide Icons
+- Animaciones en CSS + IntersectionObserver (sin dependencias de animación)
+
+Sin backend: todo el sitio se prerenderiza como contenido estático y los CTA abren
+`mailto:info@balsalabs.com`.
+
+## Comandos
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm run build
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Comprobación de tipos:
 
-## Learn More
+```bash
+npx tsc --noEmit
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Estructura
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/
+│   ├── layout.tsx                  metadata, fuentes, JSON-LD (ProfessionalService)
+│   ├── page.tsx                    portada + JSON-LD de FAQPage
+│   ├── globals.css                 paleta, tipografía, utilidades y animaciones
+│   ├── opengraph-image.tsx         imagen social generada por código
+│   ├── robots.ts / sitemap.ts
+│   └── (legal)/                    política de privacidad y términos (en preparación)
+├── components/                     nueve secciones de la portada y UI compartida
+└── lib/
+    ├── site.ts                     correo, URL, navegación y constructor de mailto
+    └── faqs.ts                     preguntas frecuentes (UI + JSON-LD)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Criterio editorial
 
-## Deploy on Vercel
+La página está pensada para recorrerse en pocos minutos: una idea por sección, frases
+cortas y listas de cuatro puntos como máximo. Antes de agregar texto, conviene preguntarse
+qué se puede quitar a cambio.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notas de mantenimiento
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Correo único:** `src/lib/site.ts` concentra `info@balsalabs.com` y los asuntos
+  predefinidos. Cambiarlo ahí actualiza todos los CTA del sitio.
+- **Calculadora:** `src/components/Calculator.tsx` calcula en el navegador. No envía ni
+  almacena datos. El resumen solo se adjunta al correo si la persona marca la casilla, y
+  el texto exacto se muestra antes.
+- **Cifras de mercado:** cada dato de `WhyNowSection.tsx` mantiene fuente visible,
+  enlace externo y su aclaración. No convertirlas en promesas de resultados.
+- **Movimiento:** las animaciones respetan `prefers-reduced-motion` desde CSS y el
+  contenido con animación de entrada se muestra igual sin JavaScript (`<noscript>` en
+  `layout.tsx`).
+- **Dominio:** `SITE_URL` en `src/lib/site.ts` alimenta canonical, Open Graph y sitemap.
