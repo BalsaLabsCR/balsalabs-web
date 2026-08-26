@@ -25,6 +25,8 @@ type ButtonLinkProps = {
   variant?: keyof typeof variants;
   size?: keyof typeof sizes;
   className?: string;
+  /** Abre en una pestaña nueva: se usa para destinos fuera del sitio (Calendly). */
+  external?: boolean;
 };
 
 export function ButtonLink({
@@ -33,9 +35,14 @@ export function ButtonLink({
   variant = "primary",
   size = "md",
   className = "",
+  external = false,
 }: ButtonLinkProps) {
   return (
-    <a href={href} className={`${baseButton} ${variants[variant]} ${sizes[size]} ${className}`}>
+    <a
+      href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : null)}
+      className={`${baseButton} ${variants[variant]} ${sizes[size]} ${className}`}
+    >
       {children}
     </a>
   );

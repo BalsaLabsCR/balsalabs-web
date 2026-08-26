@@ -4,6 +4,7 @@ import FaqSection from "@/components/FaqSection";
 import FinalCta from "@/components/FinalCta";
 import Hero from "@/components/Hero";
 import HowWeWork from "@/components/HowWeWork";
+import PilotSection from "@/components/PilotSection";
 import ProblemSection from "@/components/ProblemSection";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
@@ -40,6 +41,7 @@ export default function Home() {
         <WhatWeAutomate />
         <AgentVsChatbot />
         <HowWeWork />
+        <PilotSection />
         <CalculatorSection />
         <FaqSection />
         <FinalCta />

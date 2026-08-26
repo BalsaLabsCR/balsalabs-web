@@ -1,3 +1,5 @@
+import { PILOT_DURATION, PILOT_PRICE } from "./site";
+
 export const FAQS = [
   {
     question: "¿Todo proceso necesita inteligencia artificial?",
@@ -28,5 +30,20 @@ export const FAQS = [
     question: "¿Cómo se determina el costo?",
     answer:
       "Depende del proceso, volumen, integraciones, riesgos y nivel de soporte. El primer paso es realizar un diagnóstico y delimitar un experimento.",
+  },
+  {
+    question: "¿La primera conversación tiene algún costo?",
+    answer:
+      "No. La asesoría inicial es una llamada de 30 minutos sin costo ni compromiso: revisamos tus procesos, te decimos qué se puede automatizar hoy y qué todavía no conviene. Se agenda directamente desde el sitio.",
+  },
+  {
+    question: `¿Qué incluye el piloto de ${PILOT_PRICE}?`,
+    answer:
+      `Implementamos un agente sobre un proceso real de tu negocio, conectado a tus herramientas, y medimos su desempeño frente a la situación actual: tiempo por caso, volumen atendido, errores y costo. Recibes el agente funcionando, un informe con los resultados y el costo estimado de llevarlo a producción. Toma ${PILOT_DURATION} y es un pago único.`,
+  },
+  {
+    question: "¿Qué pasa si el piloto no funciona?",
+    answer:
+      "Te lo decimos con los datos en la mano. El propósito del piloto es justamente evitar una inversión grande basada en suposiciones: si los números no justifican continuar, no hay nada que renovar ni cancelar.",
   },
 ] as const;

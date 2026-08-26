@@ -1,10 +1,16 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const alt = "BalsaLabs · Automatizaciones con IA para negocios";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  // Satori no resuelve rutas del sitio: la marca se incrusta como data URI.
+  const mark = await readFile(join(process.cwd(), "public", "logo-mark-light.png"));
+  const markSrc = `data:image/png;base64,${mark.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -19,17 +25,9 @@ export default function OpengraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <div style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: "#F7F4ED" }} />
-            <div style={{ width: 44, height: 2, backgroundColor: "#246BCE" }} />
-            <div style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: "#246BCE" }} />
-            <div style={{ width: 44, height: 2, backgroundColor: "#246BCE" }} />
-            <div style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: "#1F7A5C" }} />
-          </div>
-          <div style={{ fontSize: 30, fontWeight: 800, color: "#FFFFFF", marginLeft: 12 }}>
-            BalsaLabs
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
+          <img src={markSrc} width={56} height={52} alt="" />
+          <div style={{ fontSize: 34, fontWeight: 800, color: "#FFFFFF" }}>BalsaLabs</div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>

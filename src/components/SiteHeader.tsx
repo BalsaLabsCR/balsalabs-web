@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { MAILTO_DIAGNOSTICO, NAV_LINKS } from "@/lib/site";
+import Logo from "./Logo";
+import { CALENDLY_URL, NAV_LINKS } from "@/lib/site";
 
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -76,12 +77,8 @@ export default function SiteHeader() {
         }`}
       >
         <div className="container-page flex h-full items-center justify-between gap-4">
-          <a
-            href="#inicio"
-            className="flex items-center gap-2.5 rounded-md font-display text-[1.05rem] font-extrabold tracking-tight text-ink"
-          >
-            <NodeMark />
-            BalsaLabs
+          <a href="#inicio" aria-label="BalsaLabs, ir al inicio" className="rounded-md">
+            <Logo priority />
           </a>
 
           <nav aria-label="Navegación principal" className="hidden items-center gap-1 lg:flex">
@@ -98,12 +95,14 @@ export default function SiteHeader() {
 
           <div className="flex items-center gap-2">
             <a
-              href={MAILTO_DIAGNOSTICO}
-              aria-label="Solicitar diagnóstico"
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Agendar una asesoría gratuita"
               className="inline-flex rounded-xl bg-blue px-3 py-2 text-[0.82rem] font-semibold text-white transition-colors hover:bg-blue-700 sm:px-4 sm:text-[0.88rem]"
             >
-              <span className="sm:hidden">Diagnóstico</span>
-              <span className="hidden sm:inline">Solicitar diagnóstico</span>
+              <span className="sm:hidden">Agendar</span>
+              <span className="hidden sm:inline">Agenda una asesoría gratuita</span>
             </a>
 
             <button
@@ -156,33 +155,17 @@ export default function SiteHeader() {
               ))}
             </nav>
             <a
-              href={MAILTO_DIAGNOSTICO}
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={close}
               className="mt-5 flex w-full items-center justify-center rounded-xl bg-blue px-5 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
             >
-              Solicitar diagnóstico
+              Agenda una asesoría gratuita
             </a>
           </div>
         </div>
       )}
     </>
-  );
-}
-
-/** Marca tipográfica: tres nodos conectados, en línea con el motivo gráfico del sitio. */
-function NodeMark() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" className="shrink-0">
-      <path
-        d="M4 16 L11 6 L18 16"
-        fill="none"
-        stroke="#246BCE"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <circle cx="4" cy="16" r="2.4" fill="#0B1F33" />
-      <circle cx="11" cy="6" r="2.4" fill="#246BCE" />
-      <circle cx="18" cy="16" r="2.4" fill="#1F7A5C" />
-    </svg>
   );
 }

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import { EMAIL, SITE_URL } from "@/lib/site";
+import { EMAIL, PILOT_PRICE, SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,7 +18,7 @@ const manrope = Manrope({
 
 const TITLE = "BalsaLabs | Automatizaciones con IA para negocios";
 const DESCRIPTION =
-  "Ayudamos a negocios a automatizar procesos con inteligencia artificial, agentes e integraciones. Atención, ventas, documentos, reportes y operaciones.";
+  "Ayudamos a negocios a automatizar procesos con inteligencia artificial, agentes e integraciones. Asesoría inicial sin costo y pilotos con resultados medibles.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     "agentes de IA",
     "integraciones",
     "automatización WhatsApp",
+    "piloto de agentes de IA",
     "Costa Rica",
   ],
   alternates: {
@@ -65,6 +66,8 @@ const organizationJsonLd = {
   "@type": "ProfessionalService",
   name: "BalsaLabs",
   url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}/logo.png`,
   email: EMAIL,
   description: DESCRIPTION,
   slogan: "Automatizaciones con IA para negocios.",
@@ -75,6 +78,24 @@ const organizationJsonLd = {
     contactType: "Consultas comerciales",
     availableLanguage: ["es"],
   },
+  makesOffer: [
+    {
+      "@type": "Offer",
+      name: "Asesoría inicial",
+      description:
+        "Llamada de 30 minutos sin costo para identificar procesos automatizables en tu negocio.",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    {
+      "@type": "Offer",
+      name: "Piloto de agente de IA",
+      description:
+        "Implementación de un agente sobre un proceso real, con métricas antes y después e informe de resultados.",
+      price: PILOT_PRICE.replace("$", ""),
+      priceCurrency: "USD",
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

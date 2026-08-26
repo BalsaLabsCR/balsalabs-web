@@ -1,7 +1,7 @@
-import { ArrowRight, Check, Mail } from "lucide-react";
+import { ArrowRight, CalendarCheck, Check, Mail } from "lucide-react";
 import Reveal from "./Reveal";
 import { ButtonLink, Kicker } from "./ui";
-import { EMAIL, MAILTO_DIAGNOSTICO, MAILTO_EVALUAR_PROCESO } from "@/lib/site";
+import { CALENDLY_URL, EMAIL, MAILTO_DIAGNOSTICO, MAILTO_EVALUAR_PROCESO } from "@/lib/site";
 
 /** Señales de que un proceso es buen candidato para un primer experimento. */
 const SIGNALS = [
@@ -31,13 +31,14 @@ export default function FinalCta() {
               ¿Qué proceso de tu negocio debería dejar de depender de trabajo manual?
             </h2>
             <p className="mt-4 max-w-lg text-[1rem] leading-relaxed text-white/70">
-              Identifiquemos una oportunidad concreta, diseñemos un primer experimento y midamos el
-              resultado.
+              Agenda 30 minutos sin costo: identificamos una oportunidad concreta, diseñamos un primer
+              experimento y definimos cómo medir el resultado.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={MAILTO_DIAGNOSTICO} variant="solidLight" size="lg">
-                Solicitar diagnóstico
+              <ButtonLink href={CALENDLY_URL} external variant="solidLight" size="lg">
+                <CalendarCheck size={18} aria-hidden="true" />
+                Agenda una asesoría gratuita
                 <ArrowRight size={18} aria-hidden="true" />
               </ButtonLink>
               <ButtonLink href={MAILTO_EVALUAR_PROCESO} variant="ghostDark" size="lg">
@@ -47,7 +48,7 @@ export default function FinalCta() {
             </div>
 
             <p className="mt-5 text-[0.88rem] text-white/60">
-              Escríbenos a{" "}
+              ¿No te sirve ninguno de los horarios? Escríbenos a{" "}
               <a
                 href={MAILTO_DIAGNOSTICO}
                 className="font-semibold text-white underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white"

@@ -1,7 +1,7 @@
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, CalendarCheck } from "lucide-react";
 import HeroDiagram from "./HeroDiagram";
 import { ButtonLink, Kicker } from "./ui";
-import { MAILTO_DIAGNOSTICO } from "@/lib/site";
+import { CALENDLY_URL, PILOT_PRICE } from "@/lib/site";
 
 const TRUST = ["Procesos claros", "Integraciones reales", "Supervisión humana", "Resultados medibles"];
 
@@ -28,16 +28,27 @@ export default function Hero() {
               seguimiento comercial, reportes y operaciones internas.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink href="#calculadora" size="lg">
-                Identifica qué puedes automatizar
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <ButtonLink href={CALENDLY_URL} external size="lg">
+                <CalendarCheck size={18} aria-hidden="true" />
+                Agenda una asesoría gratuita
+              </ButtonLink>
+              <ButtonLink href="#calculadora" variant="secondary" size="lg">
+                Calcula tu ahorro
                 <ArrowDown size={18} aria-hidden="true" />
               </ButtonLink>
-              <ButtonLink href={MAILTO_DIAGNOSTICO} variant="secondary" size="lg">
-                <Mail size={18} aria-hidden="true" />
-                Solicita un diagnóstico
-              </ButtonLink>
             </div>
+
+            <p className="mt-4 text-[0.88rem] text-muted">
+              30 minutos, sin costo y sin compromiso. ¿Prefieres probar antes de decidir? Tenemos un{" "}
+              <a
+                href="#piloto"
+                className="font-semibold text-blue underline decoration-blue/30 underline-offset-4 transition-colors hover:decoration-blue"
+              >
+                piloto con resultados medibles por {PILOT_PRICE}
+              </a>
+              .
+            </p>
 
             <ul className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-[0.85rem] text-muted">
               {TRUST.map((item, index) => (
