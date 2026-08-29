@@ -3,12 +3,14 @@ import CalculatorSection from "@/components/CalculatorSection";
 import DemoSection from "@/components/DemoSection";
 import FaqSection from "@/components/FaqSection";
 import FinalCta from "@/components/FinalCta";
+import FounderSection from "@/components/FounderSection";
 import Hero from "@/components/Hero";
 import HowWeWork from "@/components/HowWeWork";
 import PilotSection from "@/components/PilotSection";
 import ProblemSection from "@/components/ProblemSection";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import SpeakingSection from "@/components/SpeakingSection";
 import WhatWeAutomate from "@/components/WhatWeAutomate";
 import WhyNowSection from "@/components/WhyNowSection";
 import { FAQS } from "@/lib/faqs";
@@ -42,10 +44,12 @@ export default function Home() {
         <WhatWeAutomate />
         <AgentVsChatbot />
         <DemoSection />
+        <SpeakingSection />
         <HowWeWork />
         <PilotSection />
         <CalculatorSection />
         <FaqSection />
+        <FounderSection />
         <FinalCta />
       </main>
       <SiteFooter />
