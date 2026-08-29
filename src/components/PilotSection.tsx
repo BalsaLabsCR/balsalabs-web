@@ -1,39 +1,17 @@
-import { ArrowRight, BarChart3, CalendarDays, Check, Plug, Target } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Reveal from "./Reveal";
 import { ButtonLink, Kicker, Section, SectionLead, SectionTitle } from "./ui";
-import { CALENDLY_URL, MAILTO_PILOTO, PILOT_DURATION, PILOT_PRICE } from "@/lib/site";
+import { CALENDLY_URL, EMAIL, MAILTO_PILOTO, PILOT_DURATION, PILOT_PRICE } from "@/lib/site";
 
-/** Qué ocurre durante el piloto, en el orden en que el cliente lo vive. */
-const PHASES = [
-  {
-    Icon: Target,
-    title: "Elegimos un proceso",
-    text: "Uno solo, frecuente y con impacto claro. Definimos el alcance y qué se va a medir.",
-  },
-  {
-    Icon: Plug,
-    title: "Construimos el agente",
-    text: "Funcionando sobre tus herramientas y tus datos reales, con supervisión humana.",
-  },
-  {
-    Icon: BarChart3,
-    title: "Medimos el resultado",
-    text: "Tiempo por caso, volumen atendido, errores y costo, comparados con tu punto de partida.",
-  },
-  {
-    Icon: CalendarDays,
-    title: "Decides con números",
-    text: "Te entregamos los datos y el costo de llevarlo a producción. Continuar es opcional.",
-  },
-];
+/** El recorrido del piloto, en una sola línea en lugar de cuatro tarjetas. */
+const STEPS = ["Elegimos el proceso", "construimos", "medimos", "decides"];
 
-/** Entregables concretos del piloto. */
+/** Lo que recibe el cliente. El precio y la duración van en la cabecera de la tarjeta. */
 const INCLUDES = [
-  "Un agente funcionando sobre un proceso real.",
-  "Integración con las herramientas que ya usas.",
-  "Métricas antes y después, sin maquillaje.",
-  "Informe con los resultados y los límites encontrados.",
-  "Ruta y costo estimado para la versión completa.",
+  "Un proceso claramente delimitado.",
+  "Integración con las herramientas acordadas.",
+  "Métricas antes y después.",
+  "Recomendación y costo estimado para escalar.",
 ];
 
 export default function PilotSection() {
@@ -42,33 +20,32 @@ export default function PilotSection() {
       <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
         <div>
           <Reveal>
-            <Kicker tone="light">Piloto de agente de IA</Kicker>
+            <Kicker tone="light">Piloto de automatización</Kicker>
             <SectionTitle tone="light">
-              Pruébalo en tu operación por {PILOT_PRICE} antes de invertir en construirlo todo.
+              Pruébalo en tu operación por {PILOT_PRICE} antes de construirlo todo.
             </SectionTitle>
             <SectionLead tone="light">
-              Implementamos un agente sobre un proceso real de tu negocio y medimos lo que cambia. Al
-              final tienes cifras de tu propia operación —no una demo— para decidir si vale la pena
-              escalarlo.
+              Implementamos una automatización sobre un proceso real y medimos lo que cambia. Al
+              finalizar tendrás datos de tu propia operación para decidir si vale la pena escalar.
             </SectionLead>
           </Reveal>
 
-          <ol className="mt-9 grid gap-4 sm:grid-cols-2">
-            {PHASES.map((phase, index) => (
-              <Reveal as="li" key={phase.title} delay={index * 60} className="list-none">
-                <div className="h-full rounded-2xl border border-white/15 bg-white/[0.05] p-5">
-                  <span
-                    aria-hidden="true"
-                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-green-300"
-                  >
-                    <phase.Icon size={18} strokeWidth={1.8} />
-                  </span>
-                  <h3 className="mt-4 text-[0.98rem] font-bold text-white">{phase.title}</h3>
-                  <p className="mt-1.5 text-[0.88rem] leading-relaxed text-white/70">{phase.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </ol>
+          <Reveal delay={70}>
+            <ol className="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2">
+              {STEPS.map((step, index) => (
+                <li key={step} className="flex items-center gap-3">
+                  {index > 0 && (
+                    <ArrowRight
+                      size={15}
+                      aria-hidden="true"
+                      className="shrink-0 text-green-300"
+                    />
+                  )}
+                  <span className="text-[0.92rem] font-semibold text-white/85">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
         </div>
 
         <Reveal delay={80}>
@@ -106,7 +83,7 @@ export default function PilotSection() {
                 <ArrowRight size={18} aria-hidden="true" />
               </ButtonLink>
               <ButtonLink href={MAILTO_PILOTO} variant="secondary" className="w-full">
-                Prefiero escribir un correo
+                Escribir a {EMAIL}
               </ButtonLink>
             </div>
 

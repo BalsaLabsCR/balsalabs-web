@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import { CALENDLY_URL, NAV_LINKS } from "@/lib/site";
@@ -77,9 +78,10 @@ export default function SiteHeader() {
         }`}
       >
         <div className="container-page flex h-full items-center justify-between gap-4">
-          <a href="#inicio" aria-label="BalsaLabs, ir al inicio" className="rounded-md">
+          {/* Enlace absoluto para que el logotipo también funcione desde /calculadora. */}
+          <Link href="/#inicio" aria-label="BalsaLabs, ir al inicio" className="rounded-md">
             <Logo priority />
-          </a>
+          </Link>
 
           <nav aria-label="Navegación principal" className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map((link) => (

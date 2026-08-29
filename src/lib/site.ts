@@ -16,18 +16,17 @@ export function mailto(subject: string, body?: string): string {
 }
 
 export const MAILTO_DIAGNOSTICO = mailto("Solicitud de diagnóstico de automatización");
-export const MAILTO_EVALUAR_PROCESO = mailto("Quiero evaluar un proceso para automatización");
 export const MAILTO_PILOTO = mailto(`Quiero información sobre el piloto de ${PILOT_PRICE}`);
 
 /**
- * Anclas de la portada. Se usan como enlaces nativos para conservar el scroll
- * suave del navegador (`scroll-behavior: smooth`) sin JavaScript de por medio.
+ * Anclas de la portada. Se escriben con `/` por delante para que sirvan también
+ * desde `/calculadora`: en la portada el navegador las resuelve como salto
+ * dentro del documento y conserva el scroll suave, sin JavaScript de por medio.
  */
 export const NAV_LINKS = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#que-automatizamos", label: "Qué automatizamos" },
-  { href: "#como-trabajamos", label: "Cómo trabajamos" },
-  { href: "#piloto", label: "Piloto" },
-  { href: "#calculadora", label: "Calculadora" },
-  { href: "#preguntas-frecuentes", label: "Preguntas frecuentes" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#que-automatizamos", label: "Qué automatizamos" },
+  { href: "/#demostracion", label: "Demostración" },
+  { href: "/#piloto", label: "Piloto" },
+  { href: "/#preguntas-frecuentes", label: "Preguntas frecuentes" },
 ] as const;

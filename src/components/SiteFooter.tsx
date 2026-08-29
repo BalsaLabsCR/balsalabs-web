@@ -30,6 +30,14 @@ export default function SiteFooter() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/calculadora"
+                  className="text-[0.92rem] text-muted transition-colors hover:text-blue"
+                >
+                  Calculadora de ahorro
+                </Link>
+              </li>
             </ul>
           </nav>
 

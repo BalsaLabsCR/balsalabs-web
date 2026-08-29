@@ -27,11 +27,11 @@ export default function SpeakingSection() {
 
         <Reveal delay={80}>
           <Kicker>Conocimiento que se comparte</Kicker>
-          <SectionTitle>IA aplicada, explicada con claridad</SectionTitle>
+          <SectionTitle>IA aplicada, explicada con claridad.</SectionTitle>
           <SectionLead>
-            En BalsaLabs no solo desarrollamos automatizaciones. También ayudamos a equipos y empresas a
-            entender dónde la inteligencia artificial realmente aporta valor, cuáles riesgos deben
-            considerar y cómo empezar de forma práctica.
+            Además de desarrollar automatizaciones, ayudamos a equipos y empresas a entender dónde la
+            inteligencia artificial aporta valor, qué riesgos deben considerar y cómo empezar de forma
+            práctica.
           </SectionLead>
         </Reveal>
       </div>

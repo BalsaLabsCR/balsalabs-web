@@ -1,4 +1,4 @@
-import { CalendarClock, FileSpreadsheet, MessageCircleQuestion, Shuffle } from "lucide-react";
+import { CalendarClock, MessageCircleQuestion, Shuffle } from "lucide-react";
 import Reveal from "./Reveal";
 import { Kicker, Section, SectionTitle } from "./ui";
 
@@ -6,22 +6,17 @@ const PROBLEMS = [
   {
     Icon: MessageCircleQuestion,
     title: "Consultas repetitivas",
-    text: "Las mismas preguntas sobre precios, disponibilidad y políticas, todos los días.",
+    text: "Las mismas preguntas sobre precios, disponibilidad y políticas todos los días.",
   },
   {
     Icon: CalendarClock,
     title: "Seguimientos que se pierden",
-    text: "Cotizaciones y citas sin respuesta porque dependen de que alguien recuerde.",
+    text: "Cotizaciones, solicitudes y citas que dependen de que alguien recuerde responder.",
   },
   {
     Icon: Shuffle,
     title: "Información dispersa",
-    text: "Datos en WhatsApp, correo, hojas de cálculo y sistemas que no se comunican.",
-  },
-  {
-    Icon: FileSpreadsheet,
-    title: "Reportes manuales",
-    text: "Horas recopilando información en lugar de analizarla y decidir.",
+    text: "Datos en WhatsApp, correo y hojas de cálculo que no se actualizan entre sí.",
   },
 ];
 
@@ -30,12 +25,10 @@ export default function ProblemSection() {
     <Section tone="ivory">
       <Reveal>
         <Kicker>El punto de partida</Kicker>
-        <SectionTitle>
-          Tu equipo no debería ser el integrador humano entre todos tus sistemas.
-        </SectionTitle>
+        <SectionTitle>Tu equipo no debería conectar manualmente todos tus sistemas.</SectionTitle>
       </Reveal>
 
-      <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {PROBLEMS.map((problem, index) => (
           <Reveal as="li" key={problem.title} delay={index * 60} className="list-none">
             <div className="group h-full rounded-2xl border border-line bg-white p-5 transition-colors duration-300 hover:border-blue/35">
@@ -52,13 +45,6 @@ export default function ProblemSection() {
         ))}
       </ul>
 
-      <Reveal delay={100}>
-        <p className="mt-8 flex items-start gap-3 text-[0.95rem] leading-relaxed text-ink">
-          <span aria-hidden="true" className="mt-2 h-2 w-2 shrink-0 rounded-sm bg-green" />
-          Automatizar no es reemplazar personas. Es dejar de gastar su tiempo en tareas que una máquina
-          hace igual todos los días.
-        </p>
-      </Reveal>
     </Section>
   );
 }
