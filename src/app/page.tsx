@@ -1,5 +1,6 @@
 import AgentVsChatbot from "@/components/AgentVsChatbot";
 import CalculatorSection from "@/components/CalculatorSection";
+import DemoSection from "@/components/DemoSection";
 import FaqSection from "@/components/FaqSection";
 import FinalCta from "@/components/FinalCta";
 import Hero from "@/components/Hero";
@@ -40,6 +41,7 @@ export default function Home() {
         <WhyNowSection />
         <WhatWeAutomate />
         <AgentVsChatbot />
+        <DemoSection />
         <HowWeWork />
         <PilotSection />
         <CalculatorSection />
